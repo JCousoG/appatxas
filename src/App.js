@@ -10,11 +10,11 @@ function App() {
  let [numero, setNumero] = useState(0)
  function manexadorTotal(evento) {
   setNumero( parseFloat (evento.target.value))
-  if (isNaN(numero)){
+  if (/^[0-9]*\.?[0-9]{0,2}$/.test ((evento.target.value)))
+  {setTotal(evento.target.value)} else {
     setTotal("");
     setNumero(0);}
-    else
-  setTotal(evento.target.value) 
+   
  }
  return (
       <>
