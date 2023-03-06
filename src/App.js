@@ -44,7 +44,7 @@ function App() {
         <p> {numero} </p>
         <label>
           Appatxers:
-        <input value={numeroDeElementos} onInput={manexadorInput}/>
+        <input type= "range" max="10" min="2" value={numeroDeElementos} onInput={manexadorInput}/>
         </label>
             <p>{numeroDeElementos}</p>
 
