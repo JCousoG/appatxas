@@ -1,10 +1,29 @@
 
 import "./App.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
 function App() {
+ let [numeroDeElementos, SetNumeroDeElementos] = useState(0)
+ let [elementosHtml, SetElementosHtml] = useState([])
+ useEffect (
+  ()=>{
+    const novosElementos = []
+    let contador = 0
+    while (contador < numeroDeElementos) {
+      novosElementos.push(<p>vou poñer aqui o componente aportacion</p>)
+      contador++
+    }
+    SetElementosHtml(novosElementos)
+  },
+  [numeroDeElementos]
+ )
+ function manexadorInput(evento) {
+  let novoValor = (evento.target.value)
+  let novoValorenNumero = parseInt(novoValor)
+  SetNumeroDeElementos(novoValorenNumero)
+ }
 
  let [total, setTotal] = useState("")
  let [numero, setNumero] = useState(0)
@@ -14,8 +33,7 @@ function App() {
   {setTotal(evento.target.value)} else {
     setTotal("");
     setNumero(0);}
-   
- }
+    }
  return (
       <>
     <h1>APPATXAS</h1>
@@ -24,6 +42,13 @@ function App() {
         <input type="text" value={total} onInput={manexadorTotal}/>
       </label>
         <p> {numero} </p>
+        <label>
+          Appatxers:
+        <input value={numeroDeElementos} onInput={manexadorInput}/>
+        </label>
+            <p>{numeroDeElementos}</p>
+
+            {elementosHtml}
     </>
   );
 }
