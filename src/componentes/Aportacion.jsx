@@ -2,7 +2,7 @@
 import React from "react";
 import {useState} from "react";
 import customer from "../customer.png";
-import Saldo from "./"
+import Saldo from "./Saldo"
 
 
 
@@ -31,7 +31,7 @@ function Aportacion() {
       </label>
       <label>
         Saldo:
-        <Saldo/>
+        <Saldo diferencia="-7"/>
       </label>
       
       </div>
