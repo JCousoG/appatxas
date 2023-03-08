@@ -41,7 +41,7 @@ function Aportacion({appatxas}) {
       </label>
       <label>
         Saldo:
-        <Saldo diferencia={dif}/>
+        <Saldo diferencia={dif.toFixed(2)}/>
       </label>
       
       </div>
