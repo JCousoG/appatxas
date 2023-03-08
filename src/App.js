@@ -1,6 +1,7 @@
 
 import "./App.css"
 import { useEffect, useState } from "react";
+import Aportacion from "./componentes/Aportacion";
 
 
 
@@ -12,18 +13,13 @@ function App() {
     const novosElementos = []
     let contador = 0
     while (contador < numeroDeElementos) {
-      novosElementos.push(<p>vou poñer aqui o componente aportacion</p>)
+      novosElementos.push(<Aportacion appatxas={appatxas}/>)
       contador++
     }
     SetElementosHtml(novosElementos)
   },
   [numeroDeElementos]
- )
- function manexadorInput(evento) {
-  let novoValor = (evento.target.value)
-  let novoValorenNumero = parseInt(novoValor)
-  SetNumeroDeElementos(novoValorenNumero)
- }
+ )s
 
  let [total, setTotal] = useState("")
  let [numero, setNumero] = useState(0)
@@ -34,6 +30,12 @@ function App() {
     setTotal("");
     setNumero(0);}
     }
+    const [appatxas, setAppatxas] = useState(0)
+    useEffect(
+      ()=> {setAppatxas(numero/numeroDeElementos)},
+      [numero,numeroDeElementos]
+      
+    )
  return (
       <>
     <h1>APPATXAS</h1>
@@ -41,7 +43,7 @@ function App() {
         Total:
         <input type="text" value={total} onInput={manexadorTotal}/>
       </label>
-        <p> {numero} </p>
+        <p>APPATXA: {appatxas}€ </p>
         <label>
           Appatxers:
         <input type= "range" max="10" min="2" value={numeroDeElementos} onInput={manexadorInput}/>

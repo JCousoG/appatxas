@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import {useState} from "react";
 import customer from "../customer.png";
 import Saldo from "./Saldo"
@@ -7,18 +7,28 @@ import Saldo from "./Saldo"
 
 
 
-function Aportacion() {
-  
-   let [num,setNum] = useState(0)
+function Aportacion({appatxas}) {
+
+  const [dif, setDif] = useState(0)
+  const [num,setNum] = useState(0)
+  const [aport, setAport] =useState("")
+
+  useEffect (
+    ()=>{
+      setDif(num-appatxas)
+    },
+    [num, appatxas]
+  )
+   
   function manexadorAport(evento) {
-   setNum( parseFloat (evento.target.value))
-   if (/^[0-9]*\.?[0-9]{0,2}$/.test ((evento.target.value)))
-   {setNum(evento.target.value)} else {
     
-     setNum(0);}
-
-    }
-
+    setNum( parseFloat (evento.target.value))
+    if (/^[0-9]*\.?[0-9]{0,2}$/.test ((evento.target.value)))
+    {setAport(evento.target.value)} else {
+      setAport("");
+      setNum(0);}
+      }
+     
     return (
       
 
@@ -27,11 +37,11 @@ function Aportacion() {
        <input type="text"/>
       <label>
         Aportación:
-      <input type='text' value={num} onInput={manexadorAport} ></input>
+      <input type='text' value={aport} onInput={manexadorAport} ></input>
       </label>
       <label>
         Saldo:
-        <Saldo diferencia="-7"/>
+        <Saldo diferencia={dif}/>
       </label>
       
       </div>
