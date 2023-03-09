@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import {useState} from "react";
 import customer from "../customer.png";
 import Saldo from "./Saldo"
-
+import { aXDecimales } from "../lib";
 
 
 
@@ -15,7 +15,8 @@ function Aportacion({appatxas}) {
 
   useEffect (
     ()=>{
-      setDif(num-appatxas)
+      let difANumero = num - appatxas
+      setDif(aXDecimales(difANumero,2))
     },
     [num, appatxas]
   )
@@ -41,7 +42,7 @@ function Aportacion({appatxas}) {
       </label>
       <label>
         Saldo:
-        <Saldo diferencia={dif.toFixed(2)}/>
+        <Saldo diferencia={dif}/>
       </label>
       
       </div>

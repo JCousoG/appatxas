@@ -2,18 +2,20 @@
 import "./App.css"
 import { useEffect, useState } from "react";
 import Aportacion from "./componentes/Aportacion";
+import { aXDecimales } from "./lib";
 
 
 
 function App() {
- let [numeroDeElementos, SetNumeroDeElementos] = useState(0)
+ let [numeroDeElementos, SetNumeroDeElementos] = useState(2)
  let [elementosHtml, SetElementosHtml] = useState([])
  let [total, setTotal] = useState("")
  let [numero, setNumero] = useState(0)
  let [appatxas, setAppatxas] = useState(0)
 
  useEffect(
-  ()=> {setAppatxas(numero/numeroDeElementos)},
+  ()=> { let AppatxasANumero = numero/numeroDeElementos
+    setAppatxas(aXDecimales(AppatxasANumero,2))},
    [numero,numeroDeElementos]
  )
 
@@ -56,7 +58,7 @@ function App() {
         Total:
         <input type="text" value={total} onInput={manexadorTotal}/>
       </label>
-        <p>APPATXA: {appatxas.toFixed(2)}€ </p>
+        <p>APPATXA: {appatxas}€ </p>
         <label>
           Appatxers:
         <input type= "range" max="10" min="2" value={numeroDeElementos} onInput={manexadorInput}/>
