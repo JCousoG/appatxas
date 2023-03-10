@@ -1,16 +1,13 @@
 .debe {
   color: red;
-  border-style: double;
 font-size: 3em;
 }
 .pagou {
   color: blak;
-  border-style: double;
 font-size: 3em;
 }
 .pagoudemais {
   color: blue;
-  border-style: double;
   font-size: 3em;
 }
 img {
